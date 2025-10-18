@@ -42,5 +42,5 @@ resource "proxmox_vm_qemu" "clone-test" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=192.168.0.234/24,gw=192.168.0.1"
+  #ipconfig0 = dhcp
 }

@@ -1,5 +1,5 @@
 - name: Install qemu
-  hosts: all
+  hosts: testttt
   become: true
   tasks:
     - name: Install qemu guest agent
