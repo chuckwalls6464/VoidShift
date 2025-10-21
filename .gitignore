@@ -38,3 +38,4 @@ terraform.rc
 ansible.cfg
 .ansible/*
 .ansible*
+.vscode/
