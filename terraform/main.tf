@@ -18,8 +18,16 @@ resource "proxmox_vm_qemu" "clone-test" {
   target_node = "pmox01"
   clone       = "ubuntu-22.04-cloud"
   full_clone  = false
-
-  os_type = "cloud-init"
+  vmid        = "320"
+  os_type     = "cloud-init"
+  boot        = "order=virtio0"
+  agent       = 1
+  # Cloud-Init configuration
+  ciuser     = "dracula"
+  cipassword = var.cipassword
+  sshkeys    = var.sshkey_location
+  ipconfig0  = "ip=192.168.0.76/24,gw=192.168.0.1"
+  nameserver = var.dns_server
 
   cpu {
     cores   = 2
@@ -28,12 +36,22 @@ resource "proxmox_vm_qemu" "clone-test" {
 
   memory = 2048
 
-
-  disk {
-    slot    = "scsi0"
-    size    = "20G"
-    storage = "tank"
-    type    = "disk"
+  disks {
+    virtio {
+      virtio0 {
+        disk {
+          size    = "20G"
+          storage = "tank"
+        }
+      }
+    }
+    ide {
+      ide1 {
+        cloudinit {
+          storage = "tank"
+        }
+      }
+    }
   }
 
   network {
@@ -42,5 +60,7 @@ resource "proxmox_vm_qemu" "clone-test" {
     bridge = "vmbr0"
   }
 
-  #ipconfig0 = dhcp
+  serial {
+    id = 0
+  }
 }

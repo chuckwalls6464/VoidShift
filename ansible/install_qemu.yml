@@ -1,7 +1,10 @@
 - name: Install qemu
-  hosts: testttt
+  hosts: tf-test-clone
   become: true
   tasks:
+    - name: Update apt cache
+      ansible.builtin.package:
+        update_cache: yes
     - name: Install qemu guest agent
       ansible.builtin.package:
         name: qemu-guest-agent
@@ -9,3 +12,4 @@
 
     - name: Reboot
       ansible.builtin.reboot:
+      
