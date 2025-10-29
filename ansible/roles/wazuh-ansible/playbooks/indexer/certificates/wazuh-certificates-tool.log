@@ -1,0 +1,6 @@
+22/10/2025 22:53:13 INFO: Verbose logging redirected to /home/cwalls/VoidShift/ansible/roles/wazuh-ansible/playbooks/indexer/certificates/wazuh-certificates-tool.log
+22/10/2025 22:53:13 INFO: Generating the root certificate.
+22/10/2025 22:53:13 INFO: Generating Admin certificates.
+22/10/2025 22:53:13 INFO: Admin certificates created.
+22/10/2025 22:53:13 INFO: Generating Wazuh indexer certificates.
+22/10/2025 22:53:14 INFO: Wazuh indexer certificates created.
